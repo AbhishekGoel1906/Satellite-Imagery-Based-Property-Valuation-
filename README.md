@@ -1,1 +1,1 @@
-# Satellite-Imagery-Based-Property-Valuation-
+# Multimodal House Price Prediction (Tabular + Images)
