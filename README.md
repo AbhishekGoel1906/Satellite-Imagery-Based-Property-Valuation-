@@ -33,8 +33,6 @@ CDC_Project/
 ├── Preprocessing.ipynb              # Tabular preprocessing + geo features
 ├── model_training.ipynb             # Model training with tabular + image features
 ├── data_fetcher.py                  # Image embedding loader / dataset builder
-├── models/                          # Saved trained models
-├── results/                         # Metrics & plots
 ├── requirements.txt
 └── README.md
 
