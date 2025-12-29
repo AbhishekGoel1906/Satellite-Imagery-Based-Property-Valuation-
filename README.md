@@ -47,13 +47,13 @@ Install all dependencies using:
 pip install -r requirements.txt
 ```
 
-Key libraries used:
-- numpy, pandas
-- scikit-learn
-- matplotlib, seaborn
-- torch, torchvision
-- opencv-python
-- tqdm
+Key libraries used in this project:
+- numpy, pandas (data handling)
+- scikit-learn (modeling & evaluation)
+- matplotlib, seaborn (visualization)
+- torch, torchvision (CNN & embeddings)
+- opencv-python (image processing)
+- tqdm (progress tracking)
 
 ---
 
@@ -61,8 +61,8 @@ Key libraries used:
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone <repository-url>
-cd <repository-name>
+git clone https://github.com/AbhishekGoel1906/Satellite-Imagery-Based-Property-Valuation.git
+cd Satellite-Imagery-Based-Property-Valuation
 ```
 
 ---
@@ -86,43 +86,77 @@ pip install -r requirements.txt
 ## 📊 Data Setup
 
 ### Tabular Dataset
-Place the main CSV file inside:
+
+Place the real estate dataset CSV file inside:
 ```
 data/raw/
 ```
 
 Example:
 ```
-data/raw/real_estate_data.csv
+data/raw/house_data.csv
 ```
 
-The dataset should contain:
-- Latitude & Longitude
-- Property attributes (area, rooms, age, etc.)
-- Target variable (price)
+### Dataset Description
+
+Each row represents a residential property with the following attributes:
+
+| Column Name | Description |
+|------------|-------------|
+| `id` | Unique property identifier |
+| `date` | Date of sale |
+| `price` | Sale price (target variable) |
+| `bedrooms` | Number of bedrooms |
+| `bathrooms` | Number of bathrooms |
+| `sqft_living` | Living area in square feet |
+| `sqft_lot` | Lot size in square feet |
+| `floors` | Number of floors |
+| `waterfront` | Waterfront presence (0 = No, 1 = Yes) |
+| `view` | Quality of view (ordinal) |
+| `condition` | Overall condition rating |
+| `grade` | Construction and design grade |
+| `sqft_above` | Square feet above ground |
+| `sqft_basement` | Square feet of basement |
+| `yr_built` | Year the house was built |
+| `yr_renovated` | Year of renovation (0 if none) |
+| `zipcode` | Postal code |
+| `lat` | Latitude |
+| `long` | Longitude |
+| `sqft_living15` | Living area of nearby homes |
+| `sqft_lot15` | Lot size of nearby homes |
+
+The **target variable** for prediction is:
+```
+price
+```
 
 ---
 
-### Satellite Images & Embeddings
+## 🛰️ Satellite Images & Embeddings
 
-You may already have images and embeddings stored on **Google Drive**.
+Satellite imagery is used to capture **neighborhood-level and environmental context**.
 
-#### Option A: Google Colab (Recommended for Large Data)
+You may already have satellite images and CNN embeddings stored on **Google Drive**.
+
+### Option A: Google Colab (Recommended for Large Image Data)
 ```python
 from google.colab import drive
 drive.mount('/content/drive')
 ```
 
-Update paths inside the notebooks to point to your Drive folders.
+Update image and embedding paths inside the notebooks to point to your Drive directories.
 
-#### Option B: Local Execution
-Place files manually:
+---
+
+### Option B: Local Execution
+
+If running locally, place files as follows:
 ```
-data/images/
-data/embeddings/
+data/images/        # Satellite images (e.g., <id>.jpg)
+data/embeddings/    # CNN embeddings (.npy or .parquet)
 ```
 
-⚠️ **Do NOT push images or embeddings to GitHub.**
+⚠️ **Do NOT commit satellite images or embeddings to GitHub.**
 
 ---
 
@@ -133,11 +167,11 @@ data/embeddings/
 jupyter notebook Preprocessing.ipynb
 ```
 
-This step:
-- Cleans missing values
-- Performs feature engineering
-- Applies log transformations
-- Saves processed data to `data/processed/`
+This step performs:
+- Missing value handling
+- Feature engineering (ratios, age, log transforms)
+- Geographic feature processing (lat-long usage)
+- Saving cleaned data to `data/processed/`
 
 ---
 
@@ -147,57 +181,65 @@ jupyter notebook model_training.ipynb
 ```
 
 This step:
-- Trains tabular baseline models
-- Performs multimodal fusion with embeddings
-- Uses cross-validation
-- Evaluates using RMSE and R²
+- Trains tabular baseline regression models
+- Integrates satellite image embeddings for multimodal learning
+- Uses cross-validation for robustness
+- Evaluates models using RMSE and R²
 
-Outputs:
+Outputs generated:
 ```
 models/    → saved trained models
-results/   → metrics, plots, evaluation results
+results/   → evaluation metrics, plots, comparisons
 ```
 
 ---
 
 ## 📈 Evaluation Metrics
+
+Models are evaluated using:
 - Root Mean Squared Error (RMSE)
 - R² Score
-- Cross-Validation Mean & Standard Deviation
-- Model comparison visualizations
+- Cross-validation mean and standard deviation
+- Tabular vs Multimodal performance comparison
 
 ---
 
 ## 🔁 Reproducibility
-- Fixed random seeds
-- Deterministic data splits
-- Saved embeddings and trained models
-- Same preprocessing pipeline for all runs
+
+To ensure reproducibility:
+- Fixed random seeds are used
+- Deterministic train-validation splits
+- Saved CNN embeddings and trained models
+- Identical preprocessing pipeline across runs
 
 ---
 
 ## 🛑 Common Pitfalls
-- Ensure ID columns match between tabular data and embeddings
-- Apply log-transforms consistently
-- Avoid committing large files to GitHub
+
+- Ensure property `id` matches between tabular data and satellite images
+- Apply log transformation to `price` consistently during training and evaluation
+- Avoid committing large binary files (images, embeddings) to GitHub
 
 ---
 
 ## 🔮 Future Work
-- Transformer-based image encoders
-- CNN fine-tuning on domain-specific data
+
+- Fine-tuning CNNs on real estate imagery
+- Transformer-based vision models
 - Hyperparameter optimization
-- Real-time inference pipeline
+- Deployment-ready inference pipeline
 
 ---
 
 ## 👤 Author
+
 **Abhishek Goel**  
 Machine Learning | Data Science
 
 ---
 
 ## 📄 License
+
 This project is licensed under the **MIT License**.
 
 ---
