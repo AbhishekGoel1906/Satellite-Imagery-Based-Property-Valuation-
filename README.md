@@ -84,9 +84,9 @@ pip install -r requirements.txt
 
 ### Tabular Dataset
 
-Place the real estate dataset Excel file inside:
+Place the real estate dataset excel file inside:
 ```
-data/raw/
+data
 ```
 
 Example:
