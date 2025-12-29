@@ -12,7 +12,6 @@ The repository is structured for **easy setup, reproducibility, and scalability*
 - Strong tabular baseline models
 - Satellite imagery embeddings using CNNs (ResNet)
 - Multimodal feature fusion
-- Cross-validated evaluation
 - Designed for **local execution or Google Colab**
 
 ---
@@ -21,8 +20,6 @@ The repository is structured for **easy setup, reproducibility, and scalability*
 ```
 CDC_Project/
 ├── data/
-│   ├── raw/                         # Original CSV datasets
-│   ├── processed/                   # Cleaned & feature-engineered data
 │   └── images/
 │       ├── train/                   # Training satellite images
 │       └── test/                    # Testing satellite images
@@ -53,11 +50,11 @@ Key libraries used in this project:
 - matplotlib, seaborn (visualization)
 - torch, torchvision (CNN & embeddings)
 - opencv-python (image processing)
-- tqdm (progress tracking)
+
 
 ---
 
-## 🚀 Project Setup (Step-by-Step)
+## 🚀 Project Setup 
 
 ### 1️⃣ Clone the Repository
 ```bash
@@ -87,14 +84,14 @@ pip install -r requirements.txt
 
 ### Tabular Dataset
 
-Place the real estate dataset CSV file inside:
+Place the real estate dataset Excel file inside:
 ```
 data/raw/
 ```
 
 Example:
 ```
-data/raw/house_data.csv
+data/train.xlsx
 ```
 
 ### Dataset Description
@@ -136,7 +133,7 @@ price
 
 Satellite imagery is used to capture **neighborhood-level and environmental context**.
 
-You may already have satellite images and CNN embeddings stored on **Google Drive**.
+Extract satellite images and CNN embeddings through data_fetcher.py and store them on **Google Drive** to avoid recoumputation everytime.
 
 ### Option A: Google Colab (Recommended for Large Image Data)
 ```python
@@ -156,7 +153,6 @@ data/images/        # Satellite images (e.g., <id>.jpg)
 data/embeddings/    # CNN embeddings (.npy or .parquet)
 ```
 
-⚠️ **Do NOT commit satellite images or embeddings to GitHub.**
 
 ---
 
@@ -171,7 +167,6 @@ This step performs:
 - Missing value handling
 - Feature engineering (ratios, age, log transforms)
 - Geographic feature processing (lat-long usage)
-- Saving cleaned data to `data/processed/`
 
 ---
 
@@ -183,14 +178,19 @@ jupyter notebook model_training.ipynb
 This step:
 - Trains tabular baseline regression models
 - Integrates satellite image embeddings for multimodal learning
-- Uses cross-validation for robustness
 - Evaluates models using RMSE and R²
 
-Outputs generated:
+Running the preprocessing and training pipelines generates the following outputs **locally inside the project directories**.  
+⚠️ **Files are not automatically downloaded or exported outside the project environment.**
+
+### 📄 Prediction Outputs
+- A CSV file containing model predictions is generated after training:
 ```
-models/    → saved trained models
-results/   → evaluation metrics, plots, comparisons
+predictions.csv
 ```
+This file includes:
+- Property `id`
+- Predicted `price`
 
 ---
 
@@ -199,7 +199,6 @@ results/   → evaluation metrics, plots, comparisons
 Models are evaluated using:
 - Root Mean Squared Error (RMSE)
 - R² Score
-- Cross-validation mean and standard deviation
 - Tabular vs Multimodal performance comparison
 
 ---
@@ -238,10 +237,3 @@ Machine Learning | Data Science
 
 ---
 
-## 📄 License
-
-This project is licensed under the **MIT License**.
-
----
-
-⭐ If you find this project useful, consider giving it a star!
