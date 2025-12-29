@@ -19,26 +19,26 @@ The repository is structured for **easy setup, reproducibility, and scalability*
 
 ## 📂 Repository Structure
 ```
-├── Preprocessing.ipynb        # Data cleaning & feature engineering
-├── model_training.ipynb       # Model training & evaluation
+CDC_Project/
 ├── data/
-│   ├── raw/                   # Raw input datasets (CSV)
-│   ├── processed/             # Cleaned and feature-engineered data
-│   ├── images/                # Satellite images (not pushed to GitHub)
-│   └── embeddings/            # Image embeddings (.npy / .parquet)
-├── models/                    # Saved trained models
-├── results/                   # Metrics, plots, and evaluation outputs
-├── requirements.txt           # Python dependencies
-├── README.md                  # Project documentation
+│   ├── raw/                         # Original CSV datasets
+│   ├── processed/                   # Cleaned & feature-engineered data
+│   └── images/
+│       ├── train/                   # Training satellite images
+│       └── test/                    # Testing satellite images
+│
+├── train_image_embeddings.parquet   # Precomputed satellite embeddings (train)
+├── test_image_embeddings.parquet    # Precomputed satellite embeddings (test)
+│
+├── Preprocessing.ipynb              # Tabular preprocessing + geo features
+├── model_training.ipynb             # Model training with tabular + image features
+├── data_fetcher.py                  # Image embedding loader / dataset builder
+├── models/                          # Saved trained models
+├── results/                         # Metrics & plots
+├── requirements.txt
+└── README.md
+
 ```
-
----
-
-## ⚙️ System Requirements
-- Python **3.8+** (3.10 recommended)
-- Minimum **8 GB RAM** (16 GB recommended)
-- GPU optional (recommended for CNN embedding extraction)
-
 ---
 
 ## 📦 Dependencies
