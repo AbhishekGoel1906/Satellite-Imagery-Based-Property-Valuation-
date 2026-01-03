@@ -132,9 +132,18 @@ pip install -r requirements.txt
    └── test.xlsx     # Your test dataset
    ```
 
-Download **Pre-computed Embeddings** from : https://drive.google.com/drive/folders/1ITgXLCI5Nlygp-mbhGvp1RwJ-VOcm6Gh?usp=sharing
-OR
-**Generate Your Own** by running the notebooks.
+## 📦 Embeddings Setup
+
+### Option 1: Download Pre-computed Embeddings
+Download the pre-computed embeddings from the link below:
+
+🔗 **[Pre-computed Embeddings (Google Drive)](https://drive.google.com/drive/folders/1ITgXLCI5Nlygp-mbhGvp1RwJ-VOcm6Gh?usp=sharing)**
+
+---
+
+### Option 2: Generate Your Own Embeddings
+Alternatively, you can generate the embeddings yourself by running the provided Jupyter notebooks.
+
 
 2. **Dataset Format:**
    - Files should be in Excel format (`.xlsx`)
