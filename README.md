@@ -45,8 +45,6 @@ Satellite-Imagery-Based-Property-Valuation/
 ├── Preprocessing.ipynb              # Tabular preprocessing + geo features
 ├── model_training.ipynb             # Model training with tabular + image features
 ├── data_fetcher.py                  # Image embedding loader / dataset builder
-├── generate_report.py                # Generate PDF project report
-├── generate_report_docx.py          # Generate Word document project report
 ├── requirements.txt                  # Python dependencies
 └── README.md                         # This file
 ```
