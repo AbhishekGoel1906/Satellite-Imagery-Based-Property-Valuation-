@@ -433,8 +433,6 @@ pip install xlrd
 After running the pipeline, you'll find:
 
 - **`predictions.csv`** or **`rich_tabular_test_predictions.csv`**: Model predictions for test set
-- **`Project_Report.pdf`**: Comprehensive PDF report (if generated)
-- **`Updated_Report.docx`**: Comprehensive Word report (if generated)
 - **Visualizations**: Generated in notebook outputs
 
 ---
@@ -462,7 +460,6 @@ After running the pipeline, you'll find:
 ## 👤 Author
 
 **Abhishek Goel**  
-Machine Learning | Data Science
 
 ---
 
