@@ -13,7 +13,6 @@ The repository is structured for **easy setup, reproducibility, and scalability*
 - Satellite imagery embeddings using CNNs (ResNet)
 - Multimodal feature fusion
 - Designed for **local execution or Google Colab**
-- Comprehensive project report generation (PDF and Word)
 
 ---
 
