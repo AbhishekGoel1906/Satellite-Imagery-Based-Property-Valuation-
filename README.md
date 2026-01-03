@@ -132,6 +132,12 @@ pip install -r requirements.txt
    └── test.xlsx     # Your test dataset
    ```
 
+**Pre-computed Embeddings**
+Download from: https://drive.google.com/drive/folders/1ITgXLCI5Nlygp-mbhGvp1RwJ-VOcm6Gh?usp=sharing
+
+**Generate Your Own**
+Run the notebooks to generate embeddings from images.
+
 2. **Dataset Format:**
    - Files should be in Excel format (`.xlsx`)
    - Training file must include a `price` column (target variable)
