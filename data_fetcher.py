@@ -10,7 +10,7 @@ IMAGE_SIZE = "224x224"
 ZOOM = 18
 MAP_TYPE = "satellite"
 
-BASE_IMAGE_DIR = "/content/drive/MyDrive/CDC_Project/data/images"
+BASE_IMAGE_DIR = "/content/drive/MyDrive/Satellite Imagery Based Property Valuation/data/images"
 
 
 def fetch_image(lat, lon, save_path):
